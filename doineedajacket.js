@@ -1,23 +1,20 @@
-var cheerio = require("cheerio");
-var request = require("request-promise");
+const cheerio = require("cheerio");
+const DoINeedAJacketInfo = require("./DoINeedAJacketInfo");
+const request = require("request-promise");
 
 /**
  * Parses doineedajacket.com into a usable structure
  * @param city City name
- * @returns Promise, resolves to info structure like this:
- * { city: string, needjacket: boolean }
+ * @returns {Promise<DoINeedAJacketInfo>}
  */
 function getJacketInfo(city) {
-    const url = "https://doineedajacket.com/weather/" + encodeURIComponent(city);
+    const url = `https://doineedajacket.com/weather/${encodeURIComponent(city)}`;
     return request.get(url)
         .then(function(html) {
-            var $ = cheerio.load(html);
-            var needJacket = $("#div_dinaj > h1").html().trim().toLowerCase() === "yes";
-            return {
-                city: city,
-                needjacket: needJacket
-            };
-        })
+            const $ = cheerio.load(html);
+            const needJacket = $("#div_dinaj > h1").html().trim().toLowerCase() === "yes";
+            return new DoINeedAJacketInfo(city, needJacket);
+        });
 }
 
 module.exports = getJacketInfo;

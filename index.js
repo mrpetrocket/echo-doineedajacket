@@ -17,18 +17,17 @@ app.intent('needjacket', {
 }, intentNeedJacket);
 
 function intentNeedJacket(req, res) {
-    //get city name from slot
     const city = req.slot('CITY');
-    const reprompt = 'For jacket information, tell me the name of a US city';
     if (_.isEmpty(city)) {
         console.log("no city provided");
         // user did not provide city. bad user.
         const prompt = 'I didn\'t hear a city name. Tell me the name of a US City.';
+        const reprompt = 'For jacket information, tell me the name of a US city';
         res.say(prompt).reprompt(reprompt).shouldEndSession(false);
         return true;
     } else {
         // user provided a city name
-        console.log(`asking doIneedajacket.com about ${city} ...`);
+        console.log(`asking doineedajacket.com about ${city} ...`);
         doineedajacket(city)
             .then(function(info) {
                 console.log(info);
