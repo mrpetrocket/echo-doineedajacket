@@ -8,7 +8,7 @@ var request = require("request-promise");
  * { city: string, needjacket: boolean }
  */
 function getJacketInfo(city) {
-    var url = "https://doineedajacket.com/weather/" + encodeURIComponent(city);
+    const url = "https://doineedajacket.com/weather/" + encodeURIComponent(city);
     return request.get(url)
         .then(function(html) {
             var $ = cheerio.load(html);
