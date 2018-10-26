@@ -1,10 +1,10 @@
 {
   "name": "echo-doineedajacket",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "alexa skill to find out if you need a jacket",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +13,9 @@
     "cheerio": "^0.20.0",
     "lodash": "^4.13.1",
     "request-promise": "^3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
   }
 }

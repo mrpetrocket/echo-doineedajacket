@@ -32,7 +32,7 @@ function intentNeedJacket(req, res) {
             .then(function(info) {
                 console.log(info);
                 let response = "";
-                if (info.needjacket) {
+                if (info.needJacket) {
                     response = `You will need a jacket in ${city}`;
                 } else {
                     response = `You do not need a jacket in ${city}`;

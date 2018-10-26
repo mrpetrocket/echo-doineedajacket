@@ -7,7 +7,7 @@
 class DoINeedAJacketInfo {
     constructor(city, needJacket) {
         this.city = city;
-        this.needJacket = needjacket;
+        this.needJacket = needJacket;
     }
 };
 
